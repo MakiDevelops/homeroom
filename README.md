@@ -20,3 +20,7 @@ Pre-loaded videos will be updated from time to time.
 ## MISC
 If there is a new update, download it and put your .lsd save in the new directory.
 If you're using EasyRPG, put the Player executable in the new directory too.
+
+# How to install
+If you're using Windows, run setup.exe
+If you're on MacOS, make sure to install EasyRPG, and run either the ZIP file, folder (if you extracted), or the LZH archive file.
