@@ -1,43 +1,41 @@
 package org.orgst;
-import javafx.scene.*;
-import javafx.stage.*;
-import javafx.scene.control.Button;
-import javafx.scene.layout.GridPane;
-import javafx.application.*;
-import javafx.geometry.Insets;
 
+import javax.swing.*;
+import java.awt.*;
 import java.util.HashMap;
-public class Menu extends Application {
-    public static Scene launcherScene;
+
+public class Menu {
+    public static JFrame frame;
+
     public interface App {
-        void launch(Stage primStage);
-    }
-    @Override
-    public void start(Stage primStage) {
-        GridPane root = new GridPane();
-        root.setHgap(10); // Horizontal spacing
-        root.setVgap(10); // Vertical spacing
-        root.setPadding(new Insets(10));
-
-        HashMap<String, App> apps = new HashMap<>();
-        apps.put("Video/Audio", new org.orgst.MediaPlay());
-        int btnC = 0;
-
-        for (String name : apps.keySet()) {
-            Button btn = new Button(name);
-            btn.setOnAction(e -> apps.get(name).launch(primStage));
-            root.add(btn, btnC, 0);
-            btnC++;
-        }
-
-        Scene menuScene = new Scene(root, 200, 400);
-        Menu.launcherScene = menuScene;
-        primStage.setTitle("HomeRoom Launcher");
-        primStage.setScene(menuScene);
-        primStage.show();
+        void launch(JFrame frame);
     }
 
     public static void main(String[] args) {
-        launch(args);
+        // Schedule on Event Dispatch Thread
+        SwingUtilities.invokeLater(Menu::start);
+    }
+
+    public static void start() {
+        frame = new JFrame("HomeRoom Launcher");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(200, 400);
+
+        JPanel panel = new JPanel(new GridLayout(0, 1, 10, 10));
+        panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+
+        HashMap<String, App> apps = new HashMap<>();
+        apps.put("Video/Audio", new org.orgst.MediaPlay());
+
+        for (String name : apps.keySet()) {
+            JButton btn = new JButton(name);
+            App app = apps.get(name); // Capture reference for lambda
+            btn.addActionListener(e -> app.launch(frame));
+            panel.add(btn);
+        }
+
+        frame.getContentPane().add(panel);
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
     }
 }
