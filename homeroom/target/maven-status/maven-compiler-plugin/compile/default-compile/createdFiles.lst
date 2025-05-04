@@ -1,2 +1,4 @@
 org/orgst/MediaPlay.class
+org/orgst/Audio.class
+org/orgst/Video.class
 org/orgst/HomeRoom.class
