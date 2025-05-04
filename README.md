@@ -1,6 +1,5 @@
 # Home Room  
-IMPORTANT NOTICE: HOME ROOM WILL BE ADDED TO orgST. PLEASE CHECK orgST FOR FURTHER DETAILS  
-IMPORTANT : HomeRoom requires Java 21 to run  
+IMPORTANT NOTICE: HOME ROOM WILL BE ADDED TO orgST. PLEASE CHECK orgST FOR FURTHER DETAILS, HomeRoom requires Java 21 to run, and any version of home room that isn't in azure will be marked as beta
   
 ## Available
 ### Videos  
