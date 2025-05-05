@@ -4,21 +4,30 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+import java.util.Map;
 
 public class MediaPlay implements Menu.App {
 
     public void launch(JFrame frame) {
+        Map<String, String> BuiltIns = DLVid.dl();
         frame.setTitle("HomeRoom - Media Player");
 
         JPanel mainPanel = new JPanel(new BorderLayout());
 
-        // Video output panel
-        Canvas videoCanvas = new Canvas();
-        videoCanvas.setBackground(Color.black);
-        videoCanvas.setPreferredSize(new Dimension(800, 300));
-
-        JPanel videoPanel = new JPanel(new BorderLayout());
-        videoPanel.add(videoCanvas, BorderLayout.CENTER);
+        JPanel videoPanel = new JPanel(new GridLayout(5, 3, 10, 10));
+        if (new File("tmp/videos").exists() && new File("tmp/videos").isDirectory()){
+        for (File file : new File("tmp/videos").listFiles()) {
+            JButton btn = new JButton(file.getName());
+            btn.addActionListener(e -> {
+                try {
+                    if (file.getName().matches(".*\\.mp3$")) {Audio.playAudio(file.getAbsolutePath());}
+                    if (file.getName().matches(".*\\.mp4$")) {Video.playVideo(file.getAbsolutePath());}
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+            });
+            videoPanel.add(btn);
+        }}
         mainPanel.add(videoPanel, BorderLayout.CENTER);
 
         // Controls

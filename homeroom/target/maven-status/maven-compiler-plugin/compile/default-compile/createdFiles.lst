@@ -5,6 +5,7 @@ org/orgst/ServerUII$1.class
 org/orgst/Audio.class
 org/orgst/MPUI.class
 org/orgst/Video.class
+org/orgst/DLVid.class
 org/orgst/MediaPlay$1.class
 org/orgst/ClientUI$1.class
 org/orgst/Multiplayer.class
