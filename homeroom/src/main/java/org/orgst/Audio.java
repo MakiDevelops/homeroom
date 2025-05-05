@@ -27,15 +27,21 @@ public class Audio {
         }
 
         // Start the process and play audio
-        audioProcess = processBuilder.start();
-        System.out.println("▶ Playing: " + path);
-        // Wait for process to finish (audio playback)
-        try {
-            audioProcess.waitFor();
-        } catch (InterruptedException e) {
+        Thread th = new Thread(() -> {
+            try {
+            audioProcess = processBuilder.start();
+            System.out.println("▶ Playing: " + path);
+            // Wait for process to finish (audio playback)
+            try {
+                audioProcess.waitFor();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.out.println("⏹ Playback finished!");
+        } catch (IOException e){
             e.printStackTrace();
-        }
-        System.out.println("⏹ Playback finished!");
+        }});
+        th.start();
     }
     public static void stop() {
         if (audioProcess != null) {

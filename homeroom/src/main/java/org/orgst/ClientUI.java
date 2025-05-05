@@ -13,7 +13,8 @@ public class ClientUI implements Menu.App{
             if (!ip.isEmpty()) {
                 String fileName = Multiplayer.client(ip);
                 try {
-                    Video.playVideo(fileName);
+                    if (fileName.matches(".*\\.mp3$")) {Audio.playAudio("tmp/"+fileName);}
+                    if (fileName.matches(".*\\.mp4$")) {Video.playVideo("tmp/"+fileName);}
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
@@ -29,7 +30,8 @@ public class ClientUI implements Menu.App{
         frame.addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
             public void windowClosing(java.awt.event.WindowEvent windowEvent) {
-                frame.setContentPane(Menu.panel);
+                frame.dispose();
+                Menu.start();
             }
         });
         frame.setVisible(true);

@@ -11,7 +11,7 @@ public class ServerUII implements Menu.App{
         startButton.addActionListener(e->{
             String path = inputField.getText().trim();
             if (!path.isEmpty()) {
-                if (!path.matches(".*\\.mp3$") && !path.matches(".*\\.mp4$")) {Multiplayer.server(path);}
+                if (!path.matches(".*\\.mp3$") || !path.matches(".*\\.mp4$")) {Multiplayer.server(path);}
                 else {JOptionPane.showMessageDialog(frame, "Invalid file type!", "Error", JOptionPane.ERROR_MESSAGE);}
             }
         });
@@ -25,7 +25,8 @@ public class ServerUII implements Menu.App{
         frame.addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
             public void windowClosing(java.awt.event.WindowEvent windowEvent) {
-                    frame.setContentPane(Menu.panel);
+                frame.dispose();
+                Menu.start();
             }
         });
         frame.setVisible(true);
