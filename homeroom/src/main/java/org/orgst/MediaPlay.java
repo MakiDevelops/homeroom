@@ -36,7 +36,13 @@ public class MediaPlay implements Menu.App {
         frame.setContentPane(mainPanel);
         frame.pack();
         frame.setLocationRelativeTo(null);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        frame.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                frame.setContentPane(Menu.panel);
+            }
+        });
         frame.setVisible(true);
 
 
