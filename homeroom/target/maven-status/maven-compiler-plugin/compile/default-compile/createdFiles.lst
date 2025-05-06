@@ -9,5 +9,7 @@ org/orgst/DLVid.class
 org/orgst/MediaPlay$1.class
 org/orgst/ClientUI$1.class
 org/orgst/Multiplayer.class
+org/orgst/Menu$App.class
+org/orgst/Menu.class
 org/orgst/HomeRoom.class
 org/orgst/MPUI$1.class
