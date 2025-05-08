@@ -28,7 +28,7 @@ public class Menu {
         App app = apps.get(name);
         // looks for action
             //if btn was you this would do nothing cause your a lazy fuck
-        btn.addActionListener(e -> app.launch(frame));
+        btn.addActionListener(e -> {frame.dispose(); app.launch(frame);});
         panel.add(btn);
         start();
     }}

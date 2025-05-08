@@ -39,7 +39,8 @@ public class DLVid {
             System.out.println(resp.toString());
             return resp;
         } catch (IOException | URISyntaxException e) {
-            e.printStackTrace();
+            System.out.println("There was an error getting remote videos");
+            System.out.println("You may be offline, or the server may be unavailable");
         }
         return null;
     }

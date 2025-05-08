@@ -8,6 +8,7 @@ public class Multiplayer {
     public static void server(String path){
         try {
             ServerSocket server = new ServerSocket(3000);
+            System.out.println("Server started\nWaiting for client to connect");
             Socket client = server.accept();
             System.out.println("Client connected: " + client.getInetAddress());
             File file = new File(path);

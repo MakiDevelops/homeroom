@@ -3,14 +3,19 @@ IMPORTANT NOTICE: HOME ROOM WILL BE ADDED TO orgST. PLEASE CHECK orgST FOR FURTH
 IMPORTANT : HomeRoom requires Java 21 & VLC to run  
   
 ## Available
-### ~~Videos~~
-~~Currently you can play videos from Local Files as well as HTTP / HTTPS URLs~~ (Currently Broken)
+### Videos
+Currently you can play videos from Local Files ~~as well as HTTP / HTTPS URLs~~
 Requires MPV for Video
   
 ### Audio 
 You can play audio files  
 Currently on linux Requires mpg123  
 Windows & macOS use standard things (afplay for macOS - Default audio player for windows)
+  
+### Sharing
+You can play built-in videos  
+or use the "Multiplayer" feature to send and receive videos & audio across the local network  
+This is currently in beta.
   
 ## Idea
 Home room is a program for azure-orgst that allows users to import their own videos and take care of their own family.  
