@@ -5,26 +5,9 @@ import java.io.IOException;
 public class Audio {
     private static Process audioProcess = null;
     public static void playAudio(String path) throws IOException {
-        String os = System.getProperty("os.name").toLowerCase();
 
         ProcessBuilder processBuilder;
-
-        // MacOS
-        if (os.contains("mac")) {
-            processBuilder = new ProcessBuilder("afplay", path);
-        }
-        // Linux (using mpg123 as an example, can change to whatever is available)
-        else if (os.contains("nix") || os.contains("nux") || os.contains("mac")) {
-            processBuilder = new ProcessBuilder("mpg123", path);
-        }
-        // Windows (using start command for Windows default player)
-        else if (os.contains("win")) {
-            processBuilder = new ProcessBuilder("cmd", "/c", "start", path);
-        }
-        // Unrecognized OS
-        else {
-            throw new IOException("Unsupported OS: " + os);
-        }
+        processBuilder = new ProcessBuilder("mpv", path);
 
         // Start the process and play audio
         Thread th = new Thread(() -> {
